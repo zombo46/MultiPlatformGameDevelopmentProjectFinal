@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MultiPlatformGameDevelopmentProject-main.sln",
+    "dotnet.defaultSolution": "MultiPlatformGameDevelopmentProjectFinal.sln",
     "workbench.colorCustomizations": {
         "activityBar.background": "#141A89",
         "titleBar.activeBackground": "#1C25BF",
