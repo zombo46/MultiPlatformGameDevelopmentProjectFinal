@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - EnemyArea
+  - StartButton
+  - OptionsButton
+  - BackButton
   layers:
   - Default
   - TransparentFX

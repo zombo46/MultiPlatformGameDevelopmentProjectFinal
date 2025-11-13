@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    public GameObject OptionsCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,29 @@ public class StartMenu : MonoBehaviour
 
     }
 
-    public void OnClicked()
+    public void ButtonClicked(GameObject gameObject)
     {
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-        SceneManager.LoadScene (sceneName:"prototypeLevel");
+        string buttonTag = gameObject.tag;
+        switch(buttonTag)
+        {
+            case "StartButton":
+                OnStartClicked();
+                break;
+
+            case "OptionsButton":
+                OnOptionsClicked();
+                break;
+        }
+    }
+
+    public void OnStartClicked()
+    {
+        SceneManager.LoadScene(sceneName: "prototypeLevel");
+    }
+
+    public void OnOptionsClicked()
+    {
+        gameObject.SetActive(false);
+        OptionsCanvas.SetActive(true);
     }
 }
