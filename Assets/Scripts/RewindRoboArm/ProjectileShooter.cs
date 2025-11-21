@@ -67,10 +67,15 @@ public class ProjectileShooter : MonoBehaviour
             destination = hit.point;
         }
         else { 
-            destination = ray.GetPoint(1000);
+            destination = ray.GetPoint(50);
         }
 
         GameObject projectile = Instantiate(projectilePrefab, FirePoint.position, Quaternion.identity);
+
+        PauseProjectile pauseProj = projectile.GetComponent<PauseProjectile>();
+        if (pauseProj != null) { 
+            pauseProj.charge = currentChargeTime / maxChargeTime;
+        }
 
         float scale = 1f + 3f * (charge / maxChargeTime);
         ParticleSystem ps = projectile.GetComponentInChildren<ParticleSystem>();
@@ -78,8 +83,6 @@ public class ProjectileShooter : MonoBehaviour
             var main = ps.main;
             main.startSize = main.startSize.constant * scale;
         }
-
-        projectile.transform.localScale = Vector3.one * scale;
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = (destination - FirePoint.position).normalized * projectileSpeed;

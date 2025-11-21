@@ -19,16 +19,29 @@ public class EnemyMovement : MonoBehaviour
     public NavMeshSurface surface;
     NavMeshData data;
     
+    private bool isFrozen = false;
+    private float freezeTimer = 0f;
+
 
     void Start()
     {
         data = surface.navMeshData;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+        if (isFrozen) { 
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0f) {
+                isFrozen = false;
+                agent.isStopped = false;
+            }
+            return;
+        }
 
         if (agent.remainingDistance <= agent.stoppingDistance) //done with path
         {
@@ -62,6 +75,12 @@ public class EnemyMovement : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+
+    public void Freeze(float duration) { 
+        isFrozen = true;
+        freezeTimer = duration;
+        agent.isStopped = true;
     }
     
 }
