@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // Public variables for player settings
+
+    public GameObject playerMenu;
     public Camera playerCamera;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
@@ -183,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Interaction()
     {
-        bool interactPressed = (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame);
+        bool interactPressed = Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
 
         if (!interactPressed) return;
 
@@ -197,5 +199,26 @@ public class PlayerMovement : MonoBehaviour
                 break;
             }
         }
+    }
+
+    void OnGUI()
+    {
+        if (Event.current.Equals(Event.KeyboardEvent("tab")))
+        {            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            canMove = false;
+
+            playerMenu.SetActive(true);
+        }
+    }
+
+    public void OnPlayerMenuExit()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        canMove = true;
     }
 }

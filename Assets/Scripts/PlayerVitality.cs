@@ -9,9 +9,10 @@ public class PlayerVitality : MonoBehaviour
     public Slider oxygenBar;
     public Text oxygenText;
     private bool isDead = false;
-
+    public PlayerInventory playerInventory;
     public float PlayerMaxHealth = 100;
     public float PlayerCurrentHealth;
+
     public Slider HealthBar;
     public Text HealthText;
 
@@ -23,6 +24,8 @@ public class PlayerVitality : MonoBehaviour
         currentOxygen = maxOxygen;
         PlayerCurrentHealth = PlayerMaxHealth;
         updateUI();
+
+        playerInventory = transform.gameObject.GetComponent<PlayerInventory>();
     }
 
     void Update()
@@ -60,7 +63,12 @@ public class PlayerVitality : MonoBehaviour
         currentOxygen = maxOxygen;
         PlayerCurrentHealth = PlayerMaxHealth;
 
+        
+        playerInventory.RemoveItem("Artifact");
+
         this.transform.position = new Vector3(135f, 1f, 132f);
+
+        Debug.Log(transform.position);
     }
 
     void updateUI()

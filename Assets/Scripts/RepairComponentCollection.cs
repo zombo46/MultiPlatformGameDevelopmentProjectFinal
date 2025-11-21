@@ -12,7 +12,7 @@ public class RepairComponentCollection : MonoBehaviour
         {
             PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
             playerInventory.AddItem("Artifact");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
