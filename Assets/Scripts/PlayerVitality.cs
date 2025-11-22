@@ -12,6 +12,8 @@ public class PlayerVitality : MonoBehaviour
 
     public int PlayerMaxHealth = 3;
     public int PlayerCurrentHealth;
+
+    public PlayerInventory playerInventory;
     
     public Image[] hearts;
     public Sprite fullHeart;
