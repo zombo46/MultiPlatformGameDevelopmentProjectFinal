@@ -26,6 +26,8 @@ public class PlayerVitality : MonoBehaviour
         currentOxygen = maxOxygen;
         PlayerCurrentHealth = PlayerMaxHealth;
         updateUI();
+
+        playerInventory = transform.gameObject.GetComponent<PlayerInventory>();
     }
 
     void Update()
@@ -75,6 +77,8 @@ public class PlayerVitality : MonoBehaviour
         PlayerCurrentHealth = PlayerMaxHealth;
         updateUI();
         this.transform.position = new Vector3(135f, 1f, 132f);
+
+        Debug.Log(transform.position);
     }
 
     void updateUI()

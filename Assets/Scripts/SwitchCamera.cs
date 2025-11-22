@@ -156,6 +156,7 @@ public class SwitchCamera : MonoBehaviour
 
     public void SwitchToMain()
     {
+        Debug.Log(playerDead);
         if (playerDead)
         {
             this.SendMessage("revive");

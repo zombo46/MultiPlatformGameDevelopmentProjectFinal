@@ -9,6 +9,7 @@ TagManager:
   - StartButton
   - OptionsButton
   - BackButton
+  - LogButton
   layers:
   - Default
   - TransparentFX

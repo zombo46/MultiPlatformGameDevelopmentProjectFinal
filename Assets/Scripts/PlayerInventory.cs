@@ -13,6 +13,11 @@ public class PlayerInventory : MonoBehaviour
         items.Add(itemID);
     }
 
+    public void RemoveItem(string itemID)
+    {
+        items.Remove(itemID);
+    }
+
     public bool HasItem(string itemID)
     {
         return items.Contains(itemID);
