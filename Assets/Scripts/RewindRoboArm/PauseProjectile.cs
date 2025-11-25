@@ -17,14 +17,17 @@ public class PauseProjectile : MonoBehaviour
             if (AOEShpere != null) { 
                 GameObject sphere = Instantiate(AOEShpere, transform.position, Quaternion.identity);
 
-                float AOEscale = 1f + 0.5f * charge;
+                float AOEscale = 1.5f + 0.5f * charge;
                 sphere.transform.localScale = Vector3.one * AOEscale;
 
-                var freeze = AOEShpere.GetComponent<FreezeAOE>();
+                var blastDur = 1.8f + (2.5f - 1.8f) * charge;
+
+                var freeze = sphere.GetComponent<FreezeAOE>();
                 if (freeze != null)
                 {
-                    freeze.duration = 0.6f * charge;
+                    freeze.duration = blastDur;
                 }
+                Destroy(sphere, blastDur);
             }
             Destroy(gameObject);
         }

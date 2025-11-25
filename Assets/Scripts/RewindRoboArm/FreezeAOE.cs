@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FreezeAOE : MonoBehaviour
 {
-    public float duration = 0.6f;
+    public float duration = 1f;
 
     private void OnTriggerEnter(Collider other) { 
         if (other.CompareTag("Enemy")) { 
@@ -13,9 +13,5 @@ public class FreezeAOE : MonoBehaviour
                 enemy.Freeze(duration);
             }
         }
-    }
-
-    private void Start() { 
-        Destroy(gameObject, duration);
     }
 }

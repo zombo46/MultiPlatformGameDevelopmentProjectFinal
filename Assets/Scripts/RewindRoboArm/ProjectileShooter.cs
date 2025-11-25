@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ProjectileShooter : MonoBehaviour
 {
+    public RectTransform crosshair;
     public Camera mainCamera;
     public GameObject projectilePrefab;
     public Transform FirePoint;
-    public float projectileSpeed = 20f;
+    public float projectileSpeed = 15f;
 
     public float maxChargeTime = 1.5f;
-    public float fullChargeCooldown = 1f;
-    public float partialChargeCooldown = 1.5f;
+    public float fullChargeCooldown = 2f;
+    public float partialChargeCooldown = 3.5f;
 
     private Vector3 destination;
     private InputAction shootAction;
@@ -64,17 +66,17 @@ public class ProjectileShooter : MonoBehaviour
         isOnCooldown = true;
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
         if (Physics.Raycast(ray, out RaycastHit hit)) { 
-            destination = hit.point;
+           destination = hit.point;
         }
         else { 
-            destination = ray.GetPoint(50);
+             destination = ray.GetPoint(10);
         }
 
         GameObject projectile = Instantiate(projectilePrefab, FirePoint.position, Quaternion.identity);
 
         PauseProjectile pauseProj = projectile.GetComponent<PauseProjectile>();
         if (pauseProj != null) { 
-            pauseProj.charge = currentChargeTime / maxChargeTime;
+            pauseProj.charge = charge / maxChargeTime;
         }
 
         float scale = 1f + 3f * (charge / maxChargeTime);
@@ -90,5 +92,6 @@ public class ProjectileShooter : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         isOnCooldown = false;
     }
+   
 
 }

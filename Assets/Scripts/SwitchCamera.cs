@@ -51,6 +51,11 @@ public class SwitchCamera : MonoBehaviour
                 cam2.targetDisplay = (Display.displays.Length > 1) ? 1 : 0;
         }
 
+        foreach (var c in display1Canvases)
+        {
+            if (c != null) c.gameObject.SetActive(false);
+        }
+
         for (int i = 1; i < Display.displays.Length; i++)
             Display.displays[i].Activate();
 
@@ -117,6 +122,11 @@ public class SwitchCamera : MonoBehaviour
             Debug.LogWarning("ShowDeath: PlayerMovement is null; cannot disable movement for death.");
         }
 
+        foreach (var c in display1Canvases)
+        {
+            if (c != null) c.gameObject.SetActive(false);
+        }
+
         if (Camera2 != null)
         {
             Camera2.SetActive(true);
@@ -140,6 +150,11 @@ public class SwitchCamera : MonoBehaviour
         else
         {
             Debug.LogWarning("ShowWin: PlayerMovement is null; cannot disable movement for win.");
+        }
+
+        foreach (var c in display1Canvases)
+        {
+            if (c != null) c.gameObject.SetActive(false);
         }
 
         if (Camera2 != null)
