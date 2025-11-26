@@ -11,6 +11,7 @@ TagManager:
   - BackButton
   - LogButton
   - ShipButton
+  - PauseProjectile
   layers:
   - Default
   - TransparentFX
