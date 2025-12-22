@@ -34,12 +34,14 @@ public class Interactor : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(interactionPoint.position, interactionRange);
         foreach (Collider collider in colliders)
         {
+            Debug.Log("Interact");
             IInteractable interactable = collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
                 interactable.Interact(collider);
                 break;
             }
+            break;
         }
     }
 }
