@@ -10,15 +10,15 @@ public class TypingEffect : MonoBehaviour
 {
     [SerializeField] private float TypeSpeed = 50f;
 
-    UnityEvent spacePressed = new UnityEvent();
-
-    public void Run(string text, TMP_Text textObject)
+    public Coroutine Run(string text, TMP_Text textObject)
     {
-        StartCoroutine(TypeText(text, textObject));
+        return StartCoroutine(TypeText(text, textObject));
     }
 
     private IEnumerator TypeText(string text, TMP_Text textObject)
     {
+        textObject.text = string.Empty;
+
         float time = 0;
         int index = 0;
 
@@ -34,20 +34,5 @@ public class TypingEffect : MonoBehaviour
         }
 
         textObject.text = text;
-
-        spacePressed.AddListener(CloseText);
-    }
-
-    public void Update()
-    {
-        if (Keyboard.current.fKey.isPressed)
-        {
-            spacePressed.Invoke();
-        }
-    }
-
-    private void CloseText()
-    {
-        gameObject.SetActive(false);
     }
 }

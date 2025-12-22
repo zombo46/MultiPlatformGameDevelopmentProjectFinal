@@ -72,6 +72,11 @@ public class PlayerMovement : MonoBehaviour
         Interaction();
     }
 
+    public void setMovable(bool movability)
+    {
+        canMove = movability;
+    }
+
     private void Movement()
     {
         if (!canMove)
