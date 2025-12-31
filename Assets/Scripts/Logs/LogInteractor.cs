@@ -12,9 +12,13 @@ public class LogInteractor : MonoBehaviour, IInteractable
     [SerializeField]
     public GameObject player;
 
+    public GameObject playerMenu;
+
     [SerializeField] private LogObject testLog;
 
     public UnityEvent ePressed = new UnityEvent();
+    
+    private bool isLogOpen = false;
 
     public void Start()
     {
@@ -23,14 +27,33 @@ public class LogInteractor : MonoBehaviour, IInteractable
 
     public void Interact(Collider collider)
     {
-        Debug.Log("Invoking ePressed.");
-        ePressed.Invoke();
+        if(!isLogOpen)
+        {
+            Debug.Log("Invoking ePressed.");
+            ePressed.Invoke();
+        }
+    }
+
+    void Update()
+    {
+        //Debug.Log("isLogOpen: " + isLogOpen + ", e pressed: " + Keyboard.current.eKey.wasPressedThisFrame);
+        if(isLogOpen && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            ePressed.Invoke();
+        }
     }
 
     public void OpenBox()
     {
-        textBox.gameObject.GetComponent<LogUI>().testLogObject = testLog;
+        Debug.Log("Open Box");
+        isLogOpen = true;
+        if(testLog != null)
+        {
+            textBox.gameObject.GetComponent<LogUI>().testLogObject = testLog;
+        }
+        
         Debug.Log("ePresseed Invoked.");
+        Debug.Log("isLogOpen: " + isLogOpen);
 
         if (textBox.activeInHierarchy)
         {
@@ -52,8 +75,9 @@ public class LogInteractor : MonoBehaviour, IInteractable
 
     public void CloseBox()
     {
+        isLogOpen = false;
         ePressed.RemoveAllListeners();
-        Debug.Log("ePresseed Invoked.");
+        Debug.Log("close box");
 
         if (!textBox.activeInHierarchy)
         {
@@ -61,7 +85,10 @@ public class LogInteractor : MonoBehaviour, IInteractable
         }
 
         textBox.SetActive(false);
-        player.GetComponent<PlayerMovement>().setMovable(true);
+        if (!playerMenu.activeInHierarchy)
+        {
+            player.GetComponent<PlayerMovement>().setMovable(true);
+        }
 
         ePressed.RemoveAllListeners();
         ePressed.AddListener(OpenBox);
