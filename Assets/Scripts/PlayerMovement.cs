@@ -208,14 +208,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnGUI()
     {
-        if (Event.current.Equals(Event.KeyboardEvent("tab")))
+        if (!playerMenu.transform.GetChild(1).gameObject.activeInHierarchy && Event.current.Equals(Event.KeyboardEvent("tab")))
         {            
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
             canMove = false;
 
-            playerMenu.SetActive(true);
+            playerMenu.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 

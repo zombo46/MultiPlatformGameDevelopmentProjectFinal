@@ -16,3 +16,4 @@ MonoBehaviour:
   log:
   - Test 2
   - Hello!
+  summary: Test 2

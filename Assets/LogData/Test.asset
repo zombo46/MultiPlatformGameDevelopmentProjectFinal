@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5995fb7029cddc1419ef93cd758fd2f6, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
+  logNum: 0
   log:
   - 'Test 1.
 
@@ -22,3 +23,4 @@ MonoBehaviour:
   - 'Test 3?
 
     Wow!'
+  summary: 3 statements

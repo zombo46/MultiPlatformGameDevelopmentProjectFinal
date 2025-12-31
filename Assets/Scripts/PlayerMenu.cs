@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMenu : MonoBehaviour
 {
     public GameObject player;
+    public GameObject logMenu;
+    public GameObject logContainer;
 
     void OnGUI()
     {
@@ -31,12 +33,22 @@ public class PlayerMenu : MonoBehaviour
 
     public void OnBackClicked()
     {
-        gameObject.SetActive(false);
-        player.SendMessage("OnPlayerMenuExit");
+        if (!logContainer.activeInHierarchy)
+        {
+            logMenu.SetActive(false);
+            gameObject.SetActive(false);
+            player.SendMessage("OnPlayerMenuExit");
+        }
     }
 
     public void OnLogClicked()
     {
-        
+        if (!logMenu.activeInHierarchy)
+        {
+            logMenu.SetActive(true);
+            return;
+        }
+
+        logMenu.SetActive(false);
     }
 }

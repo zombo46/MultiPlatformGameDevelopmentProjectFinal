@@ -12,6 +12,8 @@ TagManager:
   - LogButton
   - ShipButton
   - PauseProjectile
+  - Log0
+  - Log1
   layers:
   - Default
   - TransparentFX

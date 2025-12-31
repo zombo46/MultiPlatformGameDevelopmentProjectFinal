@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.IO;
+using UnityEditor;
 
 public class LogUI : MonoBehaviour
 {
@@ -42,11 +44,41 @@ public class LogUI : MonoBehaviour
 
         atachedGameObject.SendMessage("CloseBox");
 
-        if (!PlayerPrefs.GetString("PlayerProgress").Contains(logObject.LogNum.ToString()))
+        SaveLog(logObject.LogNum);
+    }
+
+    private void SaveLog(int logIndex)
+    {
+        string path = Path.Combine(Application.persistentDataPath, "savedLogs.txt");
+
+        if (!Directory.Exists(Application.persistentDataPath))
         {
-            PlayerPrefs.SetString("PlayerProgress", PlayerPrefs.GetString("PlayerProgress") + logObject.LogNum.ToString());
+            Directory.CreateDirectory(Application.persistentDataPath);
+        }
+    
+
+        if (!File.Exists(path))
+        {
+            File.Create(path);
         }
 
-        Debug.Log(PlayerPrefs.GetString("PlayerProgress"));
+        //Read the text from directly from the test.txt file
+
+        StreamReader reader = new StreamReader(path);
+
+        string saveString = reader.ReadToEnd();
+
+        reader.Close();
+
+        //Write some text to the test.txt file
+
+        if(!saveString.Contains(logIndex.ToString()))
+        {
+            StreamWriter writer = new StreamWriter(path, true);
+
+            writer.Write(logIndex.ToString());
+
+            writer.Close();
+        }
     }
 }
