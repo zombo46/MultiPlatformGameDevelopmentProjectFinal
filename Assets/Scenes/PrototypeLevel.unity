@@ -71066,6 +71066,7 @@ GameObject:
   - component: {fileID: 855325467}
   - component: {fileID: 855325468}
   - component: {fileID: 855325469}
+  - component: {fileID: 855325470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -71342,6 +71343,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d731f3b22d4a4774ab4115f26feed8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &855325470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855325456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3440f8043cf7c4f82d2aa8475242c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 852269958}
+  firePoint: {fileID: 31998488}
+  beamPrefab: {fileID: 5321541580915665744, guid: 523526bc1bb44804599c143b231aea82, type: 3}
+  range: 1.7
+  rewindable:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1001 &856201028
 PrefabInstance:
   m_ObjectHideFlags: 0
