@@ -71358,7 +71358,7 @@ MonoBehaviour:
   mainCamera: {fileID: 852269958}
   firePoint: {fileID: 31998488}
   beamPrefab: {fileID: 5321541580915665744, guid: 523526bc1bb44804599c143b231aea82, type: 3}
-  range: 1.7
+  range: 5
   rewindable:
     serializedVersion: 2
     m_Bits: 2048
@@ -72602,7 +72602,8 @@ GameObject:
   - component: {fileID: 1038221726}
   - component: {fileID: 1038221725}
   - component: {fileID: 1038221724}
-  m_Layer: 0
+  - component: {fileID: 1038221729}
+  m_Layer: 11
   m_Name: TestingCube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72714,6 +72715,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
+--- !u!114 &1038221729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038221723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a01281ce9761446994f32d573eb449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065590215
 GameObject:
   m_ObjectHideFlags: 0
@@ -91026,7 +91039,8 @@ GameObject:
   - component: {fileID: 1919952771}
   - component: {fileID: 1919952770}
   - component: {fileID: 1919952775}
-  m_Layer: 0
+  - component: {fileID: 1919952776}
+  m_Layer: 11
   m_Name: TestingCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91138,6 +91152,18 @@ MonoBehaviour:
   ePressed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1919952776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919952769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a01281ce9761446994f32d573eb449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1924834703
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class RewindBeamShooter : MonoBehaviour
     public Camera mainCamera;
     public Transform firePoint;
     public GameObject beamPrefab;
-    public float range = 1.7f;
+    public float range = 5f;
     public LayerMask rewindable;
     public static bool isFiringBeam = false;
 
@@ -125,6 +125,11 @@ public class RewindBeamShooter : MonoBehaviour
 
     void stopRBeam()
     {
+        if (RewindTarget != null)
+        {
+            RewindTarget?.OnRewindBeamExit();
+            RewindTarget = null;
+        }
         if (currentBeam != null)
         {
             isFiringBeam = false;
