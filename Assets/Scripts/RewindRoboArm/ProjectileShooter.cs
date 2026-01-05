@@ -50,6 +50,13 @@ public class ProjectileShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (RewindBeamShooter.isFiringBeam) { 
+            isCharging = false;
+            currentChargeTime = 0f;
+            return;
+        }
+
         if (isOnCooldown) {
             return;
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1435,7 +1435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1493,6 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491130a38399b6f4795cb0102f812439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMenu: {fileID: 0}
   playerCamera: {fileID: 963194227}
   walkSpeed: 6
   runSpeed: 12
@@ -1501,8 +1502,9 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 45
   defaultHeight: 2
-  crouchHeight: 1
   crouchMultiplier: 0.5
+  interactionPoint: {fileID: 0}
+  interactionRange: 1.5
 --- !u!143 &1737725954
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1547,8 +1549,10 @@ MonoBehaviour:
   oxygenText: {fileID: 297483176}
   PlayerMaxHealth: 100
   PlayerCurrentHealth: 0
-  HealthBar: {fileID: 818051421}
-  HealthText: {fileID: 1799291753}
+  playerInventory: {fileID: 0}
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!114 &1737725956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,7 +1919,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

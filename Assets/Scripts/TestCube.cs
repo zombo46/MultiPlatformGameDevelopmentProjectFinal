@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCube : MonoBehaviour, IInteractable
+public class TestCube : MonoBehaviour, IRewindable
 {
-    public void Interact(Collider collider)
+    public void OnRewindBeamHit(Vector3 HitPoint) 
+    { 
+        GetComponent<Renderer>().material.color = Color.red;
+    }
+    public void OnRewindBeamExit() 
     {
-        Debug.Log("Oh look at me I'm a cube oh my god");
+        GetComponent<Renderer>().material.color = Color.white;
     }
 }
