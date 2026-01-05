@@ -23,6 +23,19 @@ public class ProjectileShooter : MonoBehaviour
     private float currentChargeTime = 0f;
     private bool isOnCooldown = false;
 
+    public void EnableShootAction()
+    {
+        if(shootAction != null)
+        {
+            shootAction.Enable();
+        }
+    }
+
+    public void DisableShootAction()
+    {
+        shootAction.Disable();
+    }
+
     void OnEnable()
     {
         shootAction = new InputAction(type: InputActionType.Button, binding: "<Mouse>/rightButton");

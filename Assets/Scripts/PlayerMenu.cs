@@ -8,6 +8,10 @@ public class PlayerMenu : MonoBehaviour
     public GameObject logMenu;
     public GameObject logContainer;
 
+    [SerializeField] GameObject photosContainer;
+
+    [SerializeField] GameObject selectedPhotoTab;
+
     void OnGUI()
     {
         if (Event.current.Equals(Event.KeyboardEvent("tab")))
@@ -28,7 +32,33 @@ public class PlayerMenu : MonoBehaviour
             case "LogButton":
                 OnLogClicked();
                 break;
+            
+            case "PhotosButton":
+                OnPhotosClicked();
+                break;
         }
+    }
+
+    public void OnPhotosClicked()
+    {
+        if (!photosContainer.activeInHierarchy)
+        {
+            if (logMenu.activeInHierarchy)
+            {
+                logMenu.SetActive(false);
+            }
+
+            if (selectedPhotoTab.activeInHierarchy)
+            {
+                selectedPhotoTab.SetActive(false);
+            }
+
+            photosContainer.SetActive(true);
+            
+            return;
+        }
+
+        photosContainer.SetActive(false);
     }
 
     public void OnBackClicked()
@@ -36,6 +66,8 @@ public class PlayerMenu : MonoBehaviour
         if (!logContainer.activeInHierarchy)
         {
             logMenu.SetActive(false);
+            photosContainer.SetActive(false);
+            selectedPhotoTab.SetActive(false);
             gameObject.SetActive(false);
             player.SendMessage("OnPlayerMenuExit");
         }
@@ -45,6 +77,16 @@ public class PlayerMenu : MonoBehaviour
     {
         if (!logMenu.activeInHierarchy)
         {
+            if (photosContainer.activeInHierarchy)
+            {
+                photosContainer.SetActive(false);
+            }
+
+            if (selectedPhotoTab.activeInHierarchy)
+            {
+                selectedPhotoTab.SetActive(false);
+            }
+
             logMenu.SetActive(true);
             return;
         }
