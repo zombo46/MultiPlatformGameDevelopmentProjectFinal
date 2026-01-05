@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.85098046, g: 0.50980395, b: 0.9960785, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
+  m_FogColor: {r: 0.48627454, g: 0.2392157, b: 0.69411767, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.005
   m_LinearFogStart: 5
   m_LinearFogEnd: 220
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.6831234, g: 1.5183568, b: 0.64495593, a: 1}
+  m_IndirectSpecularColor: {r: 0.4466107, g: 0.4184659, b: 0.11042785, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -94,8 +94,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f87855d01adb3d246b961776b74f0447, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 6e6bf1de7a7b8f64e912ca7e4e724d43, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1463,9 +1463,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.973
       objectReference: {fileID: 0}
+    - target: {fileID: 6481992424786040864, guid: 469212e88ab20f44cbfb2c0c9255f610, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481992424786040866, guid: 469212e88ab20f44cbfb2c0c9255f610, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481992424786040868, guid: 469212e88ab20f44cbfb2c0c9255f610, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6481992424786040870, guid: 469212e88ab20f44cbfb2c0c9255f610, type: 3}
       propertyPath: m_Name
       value: CliffBig01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481992424786040870, guid: 469212e88ab20f44cbfb2c0c9255f610, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4478,7 +4494,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4517,7 +4533,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4537,7 +4553,7 @@ Transform:
   m_GameObject: {fileID: 1449347805}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -4, y: 10, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5045,7 +5061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 657860689}
-  player: {fileID: 0}
+  player: {fileID: 644478644}
   playerMenu: {fileID: 1264306261}
   testLog: {fileID: 0}
   ePressed:
@@ -5213,9 +5229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88528e79d6e17234c975bdc1855e5863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  player: {fileID: 0}
-  playerMenu: {fileID: 0}
+  textBox: {fileID: 657860689}
+  player: {fileID: 644478644}
+  playerMenu: {fileID: 1264306261}
   testLog: {fileID: 11400000, guid: beff957b1b75fb64fa69a43bdb3a6faa, type: 2}
   ePressed:
     m_PersistentCalls:
@@ -5512,7 +5528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.554146, g: 0.19336066, b: 0.6698113, a: 0.392}
+  m_Color: {r: 0.21335432, g: 0.5754717, b: 0.1004361, a: 0.7529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
