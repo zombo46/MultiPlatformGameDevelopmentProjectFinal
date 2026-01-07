@@ -11,10 +11,11 @@ public class ProjectileShooter : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform FirePoint;
     public float projectileSpeed = 15f;
-
+    public GameObject mainMenu;
     public float maxChargeTime = 1.5f;
     public float fullChargeCooldown = 2f;
     public float partialChargeCooldown = 3.5f;
+    
 
     private Vector3 destination;
     private InputAction shootAction;
@@ -50,6 +51,10 @@ public class ProjectileShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (mainMenu != null && mainMenu.activeInHierarchy)
+        {
+            return;
+        }
 
         if (RewindBeamShooter.isFiringBeam) { 
             isCharging = false;

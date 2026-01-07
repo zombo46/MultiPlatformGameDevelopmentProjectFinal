@@ -2378,6 +2378,7 @@ MonoBehaviour:
   rewindable:
     serializedVersion: 2
     m_Bits: 2048
+  mainMenu: {fileID: 1130826147}
 --- !u!114 &644478646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,11 +2403,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c3a8f53aaf8874a9700c6b1cd5ad22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  crosshair: {fileID: 1292536744}
   mainCamera: {fileID: 1300717155}
   projectilePrefab: {fileID: 7648733514999119000, guid: 80b49e82b878ad542ae8b6d7b0bdba59, type: 3}
   FirePoint: {fileID: 614033594}
   projectileSpeed: 15
+  mainMenu: {fileID: 1130826147}
   maxChargeTime: 1.5
   fullChargeCooldown: 2
   partialChargeCooldown: 3.5
@@ -7346,6 +7348,7 @@ MonoBehaviour:
   gun: {fileID: 1147477400}
   mainCamera: {fileID: 1300717155}
   photoDistance: 7
+  mainMenu: {fileID: 1130826147}
 --- !u!1001 &1780881738
 PrefabInstance:
   m_ObjectHideFlags: 0
