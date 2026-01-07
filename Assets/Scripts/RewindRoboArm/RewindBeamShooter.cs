@@ -13,6 +13,7 @@ public class RewindBeamShooter : MonoBehaviour
     public float range = 5f;
     public LayerMask rewindable;
     public static bool isFiringBeam = false;
+    public GameObject mainMenu;
 
     private InputAction fireAction;
     private GameObject currentBeam;
@@ -37,6 +38,10 @@ public class RewindBeamShooter : MonoBehaviour
   
     void Update()
     {
+        if (mainMenu != null && mainMenu.activeInHierarchy)
+        {
+            return;
+        }
         if (fireAction == null)
         {
             return;
