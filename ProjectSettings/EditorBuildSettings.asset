@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 46bd3def7b3a70c4f8c658c8da01acc4
   - enabled: 1
-    path: Assets/Scenes/PrototypeLevel.unity
-    guid: e8722e9f0b16f9b4abaf451fd67d30ff
+    path: Assets/Scenes/FinalGame.unity
+    guid: ce5d9b21438678945bcf76ba20c2caf9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d1d951473f2872445ac662633f438527, type: 2}
   m_UseUCBPForAssetBundles: 0

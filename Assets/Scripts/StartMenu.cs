@@ -36,7 +36,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnStartClicked()
     {
-        SceneManager.LoadScene(sceneName: "prototypeLevel");
+        SceneManager.LoadScene(sceneName: "FinalGame");
     }
 
     public void OnOptionsClicked()
