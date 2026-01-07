@@ -3699,13 +3699,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614033593}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000005268355, y: -0.000000005268355, z: -0.00000005960463, w: 1}
-  m_LocalPosition: {x: 0.0045081973, y: 0.9776617, z: -0.00929594}
-  m_LocalScale: {x: 5, y: 2, z: 5}
+  m_LocalRotation: {x: 0.09176335, y: 0.0030387188, z: 0.03295526, w: 0.9952308}
+  m_LocalPosition: {x: 0.4508, y: 0.14, z: 0.0485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1303178223}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_Father: {fileID: 266136217}
+  m_LocalEulerAnglesHint: {x: 10.513, y: 0.705, z: 3.858}
 --- !u!1 &642579254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3789,6 +3789,7 @@ MonoBehaviour:
   rewindable:
     serializedVersion: 2
     m_Bits: 2048
+  mainMenu: {fileID: 1130826147}
 --- !u!114 &644478646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,11 +3814,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c3a8f53aaf8874a9700c6b1cd5ad22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
+  crosshair: {fileID: 1292536744}
   mainCamera: {fileID: 1300717155}
   projectilePrefab: {fileID: 7648733514999119000, guid: 80b49e82b878ad542ae8b6d7b0bdba59, type: 3}
   FirePoint: {fileID: 614033594}
   projectileSpeed: 15
+  mainMenu: {fileID: 1130826147}
   maxChargeTime: 1.5
   fullChargeCooldown: 2
   partialChargeCooldown: 3.5
@@ -7233,7 +7235,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0.9671562}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1303178223}
+  - {fileID: 266136217}
   m_Father: {fileID: 1300717151}
   m_LocalEulerAnglesHint: {x: -7.09, y: 61.636, z: -20.6}
 --- !u!1 &1148780792 stripped
@@ -9507,7 +9509,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

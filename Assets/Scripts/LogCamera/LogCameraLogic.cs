@@ -18,6 +18,8 @@ public class LogCameraLogic : MonoBehaviour
 
     [SerializeField] private float photoDistance = 5.0f;
 
+    [SerializeField] private GameObject mainMenu;
+
     private bool cameraEnabled = false;
 
     private GameObject hitGameObject;
@@ -33,10 +35,16 @@ public class LogCameraLogic : MonoBehaviour
 
     public void LogCameraSetup()
     {
+        if (mainMenu != null && mainMenu.activeInHierarchy)
+        {
+            return;
+        }
         cameraEnabled = true;
         cameraToggle.RemoveAllListeners();
         gameObject.SetActive(true);
         gun.SetActive(false);
+        GetComponentInParent<ProjectileShooter>().enabled = false;
+        GetComponentInParent<RewindBeamShooter>().enabled = false;
         logCameraUI.SetActive(true);
         Debug.Log("Log camera setup.");
         cameraToggle.AddListener(LogCameraDisable);
@@ -54,6 +62,8 @@ public class LogCameraLogic : MonoBehaviour
         cameraToggle.RemoveAllListeners();
         gameObject.SetActive(false);
         gun.SetActive(true);
+        GetComponentInParent<ProjectileShooter>().enabled = true;
+        GetComponentInParent<RewindBeamShooter>().enabled = true;
         logCameraUI.SetActive(false);
         Debug.Log("Log camera disabled.");
         cameraToggle.AddListener(LogCameraSetup);

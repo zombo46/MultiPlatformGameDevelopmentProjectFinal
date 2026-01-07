@@ -61,6 +61,13 @@ public class LogInteractor : MonoBehaviour, IInteractable
         }
 
         player.GetComponent<PlayerMovement>().setMovable(false);
+        player.GetComponent<ProjectileShooter>().enabled = false;
+        player.GetComponent<RewindBeamShooter>().enabled = false;
+        var logCamera = player.GetComponentInChildren<LogCameraLogic>(true);
+        if (logCamera != null)
+        {
+            logCamera.enabled = false;
+        }
         textBox.SetActive(true);
 
         ePressed.RemoveAllListeners();
@@ -88,6 +95,13 @@ public class LogInteractor : MonoBehaviour, IInteractable
         if (!playerMenu.activeInHierarchy)
         {
             player.GetComponent<PlayerMovement>().setMovable(true);
+        }
+        player.GetComponent<ProjectileShooter>().enabled = true;
+        player.GetComponent<RewindBeamShooter>().enabled = true;
+        var logCamera = player.GetComponentInChildren<LogCameraLogic>(true);
+        if (logCamera != null)
+        {
+            logCamera.enabled = true;
         }
 
         ePressed.RemoveAllListeners();

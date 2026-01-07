@@ -1,0 +1,115 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.AI.Navigation;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
+
+public class EnemyMovement : MonoBehaviour
+{
+
+    Animator animator;
+
+    public Transform goal;
+
+    public NavMeshAgent agent;
+    
+    public float range = 50.0f; //radius of sphere
+
+    public Transform centrePoint;
+
+    public NavMeshSurface surface;
+    NavMeshData data;
+    
+    private bool isFrozen = false;
+    private float freezeTimer = 0f;
+
+    private bool destinationExpired = false;
+
+    private float expireyTimerMax = 5.0f;
+
+    private float expireyTimer;
+
+
+    void Start()
+    {
+        data = surface.navMeshData;
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        expireyTimer = expireyTimerMax;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+        if (isFrozen) { 
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0f) {
+                isFrozen = false;
+                agent.isStopped = false;
+            }
+            return;
+        }
+
+        expireyTimer -= Time.deltaTime;
+
+        if(expireyTimer <= 0.0f)
+        {
+            destinationExpired = true;
+        }
+
+        if (agent.remainingDistance <= agent.stoppingDistance || destinationExpired) //done with path
+        {
+            destinationExpired = false;
+            expireyTimer = expireyTimerMax;
+            Vector3 point;
+            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+            {
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                agent.SetDestination(point);
+            }
+        }
+
+        if(GetComponent<Rigidbody>().velocity.magnitude > 0.0f)
+        {
+            animator.SetFloat("Speed", 1.0f);
+        }
+
+        else
+        {
+            animator.SetFloat("Speed", 0.0f);
+        }
+    }
+
+    void SetPath(GameObject player)
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.destination = player.transform.position;
+    }
+
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+
+        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPoint, out hit, 3.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        { 
+            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
+            //or add a for loop like in the documentation
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
+    }
+
+    public void Freeze(float duration) { 
+        isFrozen = true;
+        freezeTimer = duration;
+        agent.isStopped = true;
+    }
+    
+}
