@@ -15,7 +15,7 @@ public class SpaceshipInteractable : MonoBehaviour, IInteractable
     public GameObject prompt;
 
     [Header("other")]
-    public string requiredItemID = "Artifact";
+    public List<string> repairComponents = new List<string> {"Component1", "Component2", "Component3", "Component4" };
     public UnityEvent onWinGame;
 
     private bool isPlayerInRange = false;
@@ -43,15 +43,26 @@ public class SpaceshipInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        if (playerInventory.HasItem(requiredItemID))
+        bool allComponentsPresent = true;
+        foreach (string component in repairComponents)
         {
-            Debug.Log("you won");
-            onWinGame?.Invoke();
+            if (!playerInventory.HasItem(component))
+            {
+                allComponentsPresent = false;
+                break;
+            }
+        }
+
+        if (allComponentsPresent)
+        {
+            onWinGame.Invoke();
         }
         else
         {
-            Debug.Log("Required Item missing!");
+            Debug.Log("Components missing");
         }
+
+
     }
 
     private void OnTriggerEnter(Collider other)
