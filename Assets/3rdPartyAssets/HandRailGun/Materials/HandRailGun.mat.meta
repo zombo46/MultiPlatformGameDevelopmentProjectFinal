@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/HandRailGun/Materials/HandRailGun.mat.meta
+guid: 5f5be3d4ca018d543851afc97f2f1cdc
+=======
 guid: 131379128e8b5114385befec0ec1325a
+>>>>>>> main:Assets/3rdPartyAssets/HandRailGun/Materials/HandRailGun.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
