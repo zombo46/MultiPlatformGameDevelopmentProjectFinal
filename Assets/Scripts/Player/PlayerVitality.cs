@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerVitality : MonoBehaviour
@@ -12,6 +13,8 @@ public class PlayerVitality : MonoBehaviour
 
     public int PlayerMaxHealth = 3;
     public int PlayerCurrentHealth;
+
+    public UnityEvent playerRevived = new UnityEvent();
 
     public PlayerInventory playerInventory;
     
@@ -78,9 +81,12 @@ public class PlayerVitality : MonoBehaviour
         currentOxygen = maxOxygen;
         PlayerCurrentHealth = PlayerMaxHealth;
         updateUI();
-        this.transform.position = new Vector3(135f, 1f, 132f);
+        GetComponent<PlayerMovement>().enabled = false;
+        transform.position = new Vector3(500f, 11f, 500f);
+        GetComponent<PlayerMovement>().enabled = true;
 
         Debug.Log(transform.position);
+        playerRevived.Invoke();
     }
 
     void updateUI()
