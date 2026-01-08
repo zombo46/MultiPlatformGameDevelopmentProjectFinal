@@ -16,6 +16,7 @@ TagManager:
   - Log1
   - InventoryButton
   - PhotosButton
+  - Lava
   layers:
   - Default
   - TransparentFX

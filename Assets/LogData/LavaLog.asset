@@ -20,9 +20,15 @@ MonoBehaviour:
     After standing on a pink pad you must stand on 2 blue pads.'
   - 'Rule no.2:
 
-    every other pad must be a pad with a number on it.'
+    If a pad has a number it must be equal to the number of previous'
+  - pads stood on. This number resets to 0 when you have stood on 10 pads.
   - 'Rule no.3:
 
-    If a pad has a number it must be equal to the number of previous'
-  - pads stood on.
+    After 3 blue pads you must step on a pink pad.'
+  - 'Rule no.4:
+
+    You must stand on every pad to suceed.'
+  - 'Tip:
+
+    You also might be able to rewind a number pad to a smaller numer.'
   summary: Strange Platforms
