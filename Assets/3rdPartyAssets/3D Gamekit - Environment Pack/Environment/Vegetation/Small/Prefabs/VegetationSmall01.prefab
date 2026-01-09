@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 7996461710557371279}
   - component: {fileID: 6535988916290785744}
   - component: {fileID: 3152320345994948674}
+  - component: {fileID: 2400792424646829528}
+  - component: {fileID: 6732776913166740121}
   m_Layer: 0
   m_Name: VegetationSmall01_LOD00
   m_TagString: Untagged
@@ -301,6 +303,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+--- !u!114 &2400792424646829528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74675558790104180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac56babf0ad00f43b8bfaab37f7a4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 74675558792043190}
+  - {fileID: 74675558792043188}
+  - {fileID: 74675558792043186}
+  color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+--- !u!114 &6732776913166740121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74675558790104180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93483014fbbb16642b0d04b93cf73a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photoTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  logCamera: {fileID: 0}
+  logCameraUI: {fileID: 0}
+  photoNum: 0
 --- !u!1 &74675558790104182
 GameObject:
   m_ObjectHideFlags: 0
