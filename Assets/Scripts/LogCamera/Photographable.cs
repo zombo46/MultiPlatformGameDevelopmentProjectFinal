@@ -12,9 +12,9 @@ public class Photographable : MonoBehaviour
 
     public UnityEvent photoTaken = new UnityEvent();
 
-    [SerializeField] GameObject logCamera;
+    [SerializeField]public GameObject logCamera;
 
-    [SerializeField] private GameObject logCameraUI;
+    [SerializeField] public GameObject logCameraUI;
 
     private LogCameraLogic logCameraLogic;
 
