@@ -8333,8 +8333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondCamera: {fileID: 419937513}
   spaceshipInteracable: {fileID: 51306632}
-  numPhotos: 5
-  numLogs: 4
+  numPhotos: 4
+  numLogs: 3
 --- !u!1 &644666149
 GameObject:
   m_ObjectHideFlags: 0
