@@ -7,29 +7,29 @@ public class ShipGrid : MonoBehaviour
     [SerializeField] private GameObject shipPartPrefab;
     [SerializeField] private PlayerInventory playerInventory;
 
-    // Static list of your 4 ship parts
-    private readonly string[] shipParts =
+    private readonly string[] shipParts = { "Lava", "Maze", "Crator" };
+
+    void Start()
     {
-        "Lava", 
-        "Maze",
-        "Crator",
-    };
+        Rebuild();
+    }
 
     void OnEnable()
     {
-        foreach (string partID in shipParts)
-        {
-            DisplayPart(partID);
-        }
+        Rebuild();
     }
 
-    void OnDisable()
+    public void Rebuild()
     {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
+        // Clear whatever is currently in the grid
+        for (int i = transform.childCount - 1; i >= 0; i--)
+            Destroy(transform.GetChild(i).gameObject);
+
+        // Spawn the 3 slots
+        foreach (string partID in shipParts)
+            DisplayPart(partID);
     }
+
     private void DisplayPart(string partID)
     {
         GameObject instance = Instantiate(shipPartPrefab, transform);
@@ -39,8 +39,7 @@ public class ShipGrid : MonoBehaviour
         if (slot != null)
             slot.Setup(partID, playerInventory);
         else
-            Debug.LogError("ShipPartPrefab is missing ShipPartSlotLogic component.");
+            Debug.LogError("ShipPartPrefab is missing ShipPartSlotLogic.");
     }
-
 }
 
