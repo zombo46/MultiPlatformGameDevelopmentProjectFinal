@@ -14,10 +14,19 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 12f;
     public float jumpPower = 7f;
     public float gravity = 10f;
-    public float lookSpeed = 2f;
+    public float baseLookSpeed = 1.0f;
+    public float mouseSensitivty = 1.0f; 
     public float lookXLimit = 45f;
     public float defaultHeight = 2f;
     public float crouchMultiplier = 0.5f;
+
+    // Player movement
+    private PlayerInputActions inputActions;
+    private InputAction moveAction;
+    private InputAction lookAction; 
+    private InputAction jumpAction;
+    private InputAction interactAction;
+    private InputAction sprintAction;
 
     // Interaction settings
     public Transform interactionPoint;
@@ -38,9 +47,35 @@ public class PlayerMovement : MonoBehaviour
     // Vertical velocity tracked separately for consistent grounding/jumping
     private float verticalVelocity = 0f;
 
+    [Header("Invert Y")]
+    public bool invertY = false;
+
+    void Awake()
+    {
+        inputActions = InputManager.Instance.inputActions;
+        moveAction = inputActions.Gameplay.Move;
+        lookAction = inputActions.Gameplay.Look;
+        jumpAction = inputActions.Gameplay.Jump;
+        interactAction = inputActions.Gameplay.Interact;
+        sprintAction = inputActions.Gameplay.Sprint;
+
+        inputActions.Gameplay.Enable();
+    }
+
+    void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        LoadGameplaySettings();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -86,16 +121,13 @@ public class PlayerMovement : MonoBehaviour
         float inputZ = 0f; // forward/back
         float inputX = 0f; // left/right
 
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed) inputZ += 1f;
-            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) inputZ -= 1f;
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) inputX += 1f;
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) inputX -= 1f;
-        }
+        Vector2 moveInput = moveAction.ReadValue<Vector2>();
+        inputZ = moveInput.y;
+        inputX = moveInput.x;
+        
 
         // Running (Keyboard shift)
-        bool isRunning = (Keyboard.current != null && Keyboard.current.leftShiftKey.isPressed);
+        bool isRunning = sprintAction.IsPressed();
 
         // Determine horizontal speed (applies crouch multiplier if active)
         float speed = (isRunning ? baseRunSpeed : baseWalkSpeed) * (isCrouched ? crouchMultiplier : 1f);
@@ -108,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove *= speed;
 
         // Grounding & vertical velocity
-        bool jumpPressed = (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame);
+        bool jumpPressed = jumpAction.triggered;
         
         if (characterController.isGrounded)
         {
@@ -136,17 +168,21 @@ public class PlayerMovement : MonoBehaviour
             ToggleCrouch();
 
         // Mouse look (Input System)
-        Vector2 mouseDelta = Vector2.zero;
-        if (Mouse.current != null)
-            mouseDelta = Mouse.current.delta.ReadValue();
+        Vector2 mouseDelta = lookAction.ReadValue<Vector2>();
 
         float mouseX = mouseDelta.x;
         float mouseY = mouseDelta.y;
 
-        rotationX += -mouseY * lookSpeed;
+        // Invert Y if enabled
+        float yMultiplier = invertY ? 1f : -1f;
+
+        // Sensitivity level
+        float sensitivity = baseLookSpeed * mouseSensitivty;
+
+        rotationX += mouseY * sensitivity * yMultiplier;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
 
-        rotationY += mouseX * lookSpeed;
+        rotationY += mouseX * sensitivity;
 
         if (playerCamera != null)
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
@@ -190,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Interaction()
     {
-        bool interactPressed = Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
+        bool interactPressed = interactAction.triggered;
 
         if (!interactPressed) return;
 
@@ -224,6 +260,18 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        LoadGameplaySettings();
         canMove = true;
+    }
+
+    public void setInvertY(bool value)
+    {
+        invertY = value;
+    }
+
+    public void LoadGameplaySettings()
+    {
+        invertY = PlayerPrefs.GetInt("masterInvertY", 0) == 1;
+        mouseSensitivty = PlayerPrefs.GetFloat("masterSen", 1.0f);
     }
 }

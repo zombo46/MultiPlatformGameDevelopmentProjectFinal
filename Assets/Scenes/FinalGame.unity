@@ -655,8 +655,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1545142042746371883, guid: d3591b5e9b5eb774490d17487f276629, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 51306631}
   m_SourcePrefab: {fileID: 100100000, guid: d3591b5e9b5eb774490d17487f276629, type: 3}
+--- !u!1 &51306630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1545142042746371883, guid: d3591b5e9b5eb774490d17487f276629, type: 3}
+  m_PrefabInstance: {fileID: 51306629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &51306631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51306630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &61799772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: c51b37d9d63a14b1a92a490f9b9ae19d, type: 3}
@@ -1061,7 +1092,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97176
+  m_Name: pb_Mesh-45630
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2502,7 +2533,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97190
+  m_Name: pb_Mesh-45644
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2697,7 +2728,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94396
+  m_Name: pb_Mesh-42850
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -5762,12 +5793,14 @@ MonoBehaviour:
   runSpeed: 10
   jumpPower: 6
   gravity: 10
-  lookSpeed: 0.25
+  baseLookSpeed: 1
+  mouseSensitivty: 1
   lookXLimit: 45
   defaultHeight: 1.5
   crouchMultiplier: 0.5
   interactionPoint: {fileID: 0}
   interactionRange: 1.5
+  invertY: 0
 --- !u!136 &644478655
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9337,7 +9370,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94368
+  m_Name: pb_Mesh-42822
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -10296,7 +10329,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97396
+  m_Name: pb_Mesh-45850
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -12226,7 +12259,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94428
+  m_Name: pb_Mesh-42882
   serializedVersion: 11
   m_SubMeshes: []
   m_Shapes:
@@ -13237,7 +13270,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94410
+  m_Name: pb_Mesh-42864
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -13938,7 +13971,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-94382
+  m_Name: pb_Mesh-42836
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -17658,7 +17691,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97162
+  m_Name: pb_Mesh-45616
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
