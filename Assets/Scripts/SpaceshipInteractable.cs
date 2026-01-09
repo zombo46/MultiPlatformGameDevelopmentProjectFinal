@@ -15,7 +15,7 @@ public class SpaceshipInteractable : MonoBehaviour, IInteractable
     public GameObject prompt;
 
     [Header("other")]
-    public string requiredItemID = "Artifact";
+    public string[] requiredItemID = {"Lava", "Maze", "Crator"};
     public UnityEvent onWinGame;
 
     private bool isPlayerInRange = false;
@@ -42,16 +42,19 @@ public class SpaceshipInteractable : MonoBehaviour, IInteractable
         {
             return;
         }
-
-        if (playerInventory.HasItem(requiredItemID))
+        foreach(string component in requiredItemID)
         {
-            Debug.Log("you won");
-            onWinGame?.Invoke();
+            if (playerInventory.HasItem(component))
+            {
+                Debug.Log("you won");
+                onWinGame?.Invoke();
+            }
+            else
+            {
+                Debug.Log("Required Item missing!");
+            }
         }
-        else
-        {
-            Debug.Log("Required Item missing!");
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
