@@ -30,31 +30,25 @@ public class SpaceshipInteractable : MonoBehaviour, IInteractable
     {
 
     }
-
     public void Interact(Collider collider)
     {
         if (playerInventory == null)
-        {
-            playerInventory = FindFirstObjectByType<PlayerInventory>(); ;
-        }
+            playerInventory = FindFirstObjectByType<PlayerInventory>();
 
         if (playerInventory == null)
-        {
             return;
-        }
-        foreach(string component in requiredItemID)
+
+        foreach (string component in requiredItemID)
         {
-            if (playerInventory.HasItem(component))
+            if (!playerInventory.HasItem(component))
             {
-                Debug.Log("you won");
-                onWinGame?.Invoke();
-            }
-            else
-            {
-                Debug.Log("Required Item missing!");
+                Debug.Log("Required Item missing: " + component);
+                return; // stop immediately if any are missing
             }
         }
-        
+
+        Debug.Log("you won");
+        onWinGame?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,10 +10,9 @@ public class ShipGrid : MonoBehaviour
     // Static list of your 4 ship parts
     private readonly string[] shipParts =
     {
-        "ship_engine",
-        "ship_fuelcell",
-        "ship_navigation",
-        "ship_hull"
+        "Lava", 
+        "Maze",
+        "Crator",
     };
 
     void OnEnable()
