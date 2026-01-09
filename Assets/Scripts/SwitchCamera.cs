@@ -10,7 +10,8 @@ public class SwitchCamera : MonoBehaviour
 
     public GameObject startCanvas;
     public GameObject deathCanvas;
-    public GameObject winCanvas;
+    public GameObject GoodEndingCanvas;
+    public GameObject BadEndingCanvas;
 
     public PlayerMovement playerMovement;
     public PlayerVitality playerVitality;
@@ -101,7 +102,8 @@ public class SwitchCamera : MonoBehaviour
 
             startCanvas.SetActive(true);
             deathCanvas.SetActive(false);
-            winCanvas.SetActive(false);
+            GoodEndingCanvas.SetActive(false);
+            BadEndingCanvas.SetActive(false);
         }
     }
 
@@ -135,11 +137,12 @@ public class SwitchCamera : MonoBehaviour
 
             startCanvas.SetActive(false);
             deathCanvas.SetActive(true);
-            winCanvas.SetActive(false);
+            GoodEndingCanvas.SetActive(false);
+            BadEndingCanvas.SetActive(false);
         }
     }
 
-    void ShowWin()
+    public void ShowGoodEnding()
     {
         if (playerMovement != null)
         {
@@ -165,9 +168,43 @@ public class SwitchCamera : MonoBehaviour
 
             startCanvas.SetActive(false);
             deathCanvas.SetActive(false);
-            winCanvas.SetActive(true);
+            GoodEndingCanvas.SetActive(true);
+            BadEndingCanvas.SetActive(false);
         }
     }
+
+    public void ShowBadEnding()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetCanMove(false);
+            Debug.Log("Game Over!");
+        }
+
+        else
+        {
+            Debug.LogWarning("ShowWin: PlayerMovement is null; cannot disable movement for win.");
+        }
+
+        foreach (var c in display1Canvases)
+        {
+            if (c != null) c.gameObject.SetActive(false);
+        }
+
+        if (Camera2 != null)
+        {
+            Camera2.SetActive(true);
+            var cam2 = Camera2.GetComponent<Camera>();
+            if (cam2 != null) cam2.enabled = true;
+
+            startCanvas.SetActive(false);
+            deathCanvas.SetActive(false);
+            GoodEndingCanvas.SetActive(false);
+            BadEndingCanvas.SetActive(true);
+        }
+    }
+
+
 
     public void SwitchToMain()
     {
