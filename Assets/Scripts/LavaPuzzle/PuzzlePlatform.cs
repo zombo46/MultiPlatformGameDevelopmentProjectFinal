@@ -89,7 +89,7 @@ public class PuzzlePlatform : MonoBehaviour
             switch (platformsSteptOn[i].GetComponent<PuzzlePlatform>().platformType)
             {
                 case PlatformType.Pink:
-                    if(platformsSteptOn.Count - i < 2)
+                    if(platformsSteptOn.Count - i < 3)
                     {
                         break;
                     }
