@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class O2TreeSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject logCamera;
+
+    [SerializeField] private GameObject logCameraUI;
     public Terrain terrain;
     public GameObject treePrefab;
     public int numberOfTrees = 1000;
@@ -69,6 +72,8 @@ public class O2TreeSpawner : MonoBehaviour
 
             GameObject treeInstance = Instantiate(treePrefab, position, Quaternion.identity);
             treeInstance.GetComponentInChildren<OxygenTopUp>().Player = truePlayer;
+            treeInstance.GetComponentInChildren<Photographable>().logCamera = logCamera;
+            treeInstance.GetComponentInChildren<Photographable>().logCameraUI = logCameraUI;
             treeInstance.layer = treeLayerIndex;
             treesSpawned++;
         }
