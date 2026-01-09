@@ -30,14 +30,17 @@ public class ShipGrid : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
     private void DisplayPart(string partID)
     {
         GameObject instance = Instantiate(shipPartPrefab, transform);
         instance.transform.localScale = Vector3.one;
 
         ShipPartSlotLogic slot = instance.GetComponent<ShipPartSlotLogic>();
-        slot.SendMessage("Setup", playerInventory);
+        if (slot != null)
+            slot.Setup(partID, playerInventory);
+        else
+            Debug.LogError("ShipPartPrefab is missing ShipPartSlotLogic component.");
     }
+
 }
 

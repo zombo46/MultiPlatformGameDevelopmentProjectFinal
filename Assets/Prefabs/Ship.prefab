@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477952172732509178, guid: c1bec71e56853f847a9e3d414d22991c, type: 3}
       propertyPath: m_VersionIndex
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -676,11 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 3717381766898026179}
-  repairComponents:
-  - Component1
-  - Component2
-  - Component3
-  - Component4
+  requiredItemID: Artifact
   onWinGame:
     m_PersistentCalls:
       m_Calls:
