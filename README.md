@@ -7,3 +7,7 @@ Name: Yughues Free Ground Materials, Type: Material pack, link: https://assetsto
 Name: Universe Sounds Free Pack, Type: Audio pack, link: https://assetstore.unity.com/packages/audio/ambient/sci-fi/universe-sounds-free-pack-118865#asset_quality
 
 Name: Mine, Type: Material pack, link: https://assetstore.unity.com/packages/3d/environments/dungeons/mine-92461
+
+Name:3D Game Kit - Environment Pack, Type: Environment Pack, link: https://assetstore.unity.com/packages/3d/vegetation/3d-game-kit-environment-pack-135167
+
+Name: Hand RailGun, Type: Model/Prop, link: https://assetstore.unity.com/packages/3d/props/guns/hand-railgun-59877
