@@ -12,6 +12,8 @@ public class PlayerMenu : MonoBehaviour
 
     [SerializeField] GameObject selectedPhotoTab;
 
+    [SerializeField] GameObject shipContainer;
+
     void OnGUI()
     {
         if (Event.current.Equals(Event.KeyboardEvent("tab")))
@@ -35,6 +37,9 @@ public class PlayerMenu : MonoBehaviour
             
             case "PhotosButton":
                 OnPhotosClicked();
+                break;
+            case "ShipButton":
+                OnShipClicked();
                 break;
         }
     }
@@ -68,6 +73,7 @@ public class PlayerMenu : MonoBehaviour
             logMenu.SetActive(false);
             photosContainer.SetActive(false);
             selectedPhotoTab.SetActive(false);
+            shipContainer.SetActive(false);
             gameObject.SetActive(false);
             player.SendMessage("OnPlayerMenuExit");
         }
@@ -90,7 +96,18 @@ public class PlayerMenu : MonoBehaviour
             logMenu.SetActive(true);
             return;
         }
-
         logMenu.SetActive(false);
+    }
+    public void OnShipClicked()
+    {
+        if (!shipContainer.activeInHierarchy)
+        {
+            if (logMenu.activeInHierarchy) logMenu.SetActive(false);
+            if (photosContainer.activeInHierarchy) photosContainer.SetActive(false);
+            if (selectedPhotoTab.activeInHierarchy) selectedPhotoTab.SetActive(false);
+            shipContainer.SetActive(true);
+            return;
+        }
+        shipContainer.SetActive(false);
     }
 }
