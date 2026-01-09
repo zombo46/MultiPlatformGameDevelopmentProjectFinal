@@ -6,22 +6,11 @@ using UnityEngine;
 public class RepairComponentLava : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject player;
+
+    [SerializeField] private string componentType;
     public void Interact(Collider collider)
     {
         Destroy(gameObject);
-        player.GetComponent<PlayerInventory>().AddItem("Artifact");
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.GetComponent<PlayerInventory>().AddItem(componentType);
     }
 }
